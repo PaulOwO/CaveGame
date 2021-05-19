@@ -9,18 +9,26 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _body;
     [SerializeField] private Camera _camera;
+    [SerializeField] private Transform _cursor;
     private Vector2 _mousePosition;
     private Vector2 _lookDirection;
 
     private float _angle; 
     private float moveSpeed = 5f;
     private Vector2 movement;
+    private float _offSet = -10;
     
     void Update()
     {
        _mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
+       _cursor.position = _mousePosition;
        movement.x = Input.GetAxisRaw("Horizontal");
        movement.y = Input.GetAxisRaw("Vertical");
+
+       _camera.transform.position = this.transform.position + new Vector3(0, 0, _offSet);
+    
+       
+       
     }
 
     private void FixedUpdate()
