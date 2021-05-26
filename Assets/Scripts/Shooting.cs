@@ -7,6 +7,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Transform _firePoint;
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private float _bulletSpeed = 20f;
+    
 
     private GameObject _bulletInstance;
     private Rigidbody2D _bodyInstance;
