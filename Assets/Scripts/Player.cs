@@ -1,37 +1,45 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _body;
-    [SerializeField] private Camera _camera;
-    [SerializeField] private Transform _cursor;
-    private Vector2 _mousePosition;
-    private Vector2 _lookDirection;
-
-    private float _cameraOffSet = -10;
-    private float _angle; 
+    
+    private Vector2 _direction;
+    private Vector2 _targetPos;
+    private float _angle;
     private float moveSpeed = 20f;
-    private Vector2 movement;
-    
-    
+
+
+
+
+    public enum State
+    {
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT
+    };
+
+    private State _stateDir;
+
+    void Start()
+    {
+        
+    }
     void Update()
     {
-       _mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
-       _cursor.position = _mousePosition;
-       movement.x = Input.GetAxisRaw("Horizontal");
-       movement.y = Input.GetAxisRaw("Vertical");
 
-       _camera.transform.position = this.transform.position + new Vector3(0, 0, _cameraOffSet);
+        if (_health < 1)
+        {
+            Death();
+        }
 
-       if (_health < 1)
-       {
-           Death();
-       }
+        TakeInput();
+        Move();
     }
 
     private void Death()
@@ -39,12 +47,40 @@ public class Player : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void FixedUpdate()
+
+    private void Move() //Moves the player
     {
-        _lookDirection = _mousePosition - _body.position;
-        _angle = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg - 90f;
-        _body.rotation = _angle;
-        _body.MovePosition(_body.position + movement * moveSpeed * Time.fixedDeltaTime);
+        transform.Translate(_direction * (moveSpeed * Time.deltaTime));
+        if (_direction.x != 0 || _direction.y != 0)                          // PUT DEADZONE HERE
+        {
+            
+        }
+        
+    }
+
+    private void TakeInput() // Takes input to move the player
+    {
+        _direction = Vector2.zero;
+        if (Input.GetKey(KeyCode.W))
+        {
+            _direction += Vector2.up;
+            _stateDir = State.UP;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            _direction += Vector2.down;
+            _stateDir = State.DOWN;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            _direction += Vector2.left;
+            _stateDir = State.LEFT;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            _direction += Vector2.right;
+            _stateDir = State.RIGHT;
+        }
     }
 
     [SerializeField] private float _health = 3.0f;
@@ -62,3 +98,4 @@ public class Player : MonoBehaviour
         _health -= _damage;
     }
 }
+
