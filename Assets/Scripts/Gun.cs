@@ -16,7 +16,7 @@ public class Gun : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
 
@@ -33,9 +33,9 @@ public class Gun : MonoBehaviour
     private void FixedUpdate()
     {
         _lookDirection = _mousePosition - _body.position;
-        _angle = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg - 90f;
+        _angle = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg;
         _body.rotation = _angle;
-        
+
     }
 
 }

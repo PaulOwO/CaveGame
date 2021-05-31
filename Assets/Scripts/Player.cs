@@ -7,7 +7,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _body;
-    
+
     private Vector2 _direction;
     private Vector2 _targetPos;
     private float _angle;
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        
+
     }
     void Update()
     {
@@ -53,9 +53,9 @@ public class Player : MonoBehaviour
         transform.Translate(_direction * (moveSpeed * Time.deltaTime));
         if (_direction.x != 0 || _direction.y != 0)                          // PUT DEADZONE HERE
         {
-            
+
         }
-        
+
     }
 
     private void TakeInput() // Takes input to move the player
@@ -98,4 +98,3 @@ public class Player : MonoBehaviour
         _health -= _damage;
     }
 }
-

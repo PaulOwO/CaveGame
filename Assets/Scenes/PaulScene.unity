@@ -1852,6 +1852,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShooter
       objectReference: {fileID: 0}
+    - target: {fileID: 1381977682432572880, guid: c7a48d7f4b87a614d9b040b09a0769e6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1381977682432572882, guid: c7a48d7f4b87a614d9b040b09a0769e6, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1905,13 +1909,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 641420319421337268, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8883973779360946065, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8883973779360946065, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.2
+      value: -16.71
       objectReference: {fileID: 0}
     - target: {fileID: 8883973779360946065, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
       propertyPath: m_LocalPosition.y
