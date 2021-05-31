@@ -9,6 +9,7 @@ using Random = UnityEngine.Random;
 public class CellularAutomata : MonoBehaviour
 {
     [SerializeField] private CellBehavior cellBehaviorPrefab;
+    [SerializeField] private GroundBehavior groundBehaviorPrefab;
 
     protected CellBehavior[,] cellViews;
     protected Cell[,] cells;
@@ -157,6 +158,21 @@ public class CellularAutomata : MonoBehaviour
             System.TimeSpan ts = (end - start);
             Debug.Log("Region connection Elapsed Time is "+ts.TotalMilliseconds+"ms");
             
+            //Paul stuff
+
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    Vector3 position = new Vector3((x-width/2)*cellSize,(y-height/2)*cellSize, 0.0f);
+                    var cell = Instantiate(groundBehaviorPrefab, position, Quaternion.identity, transform);
+                    int aliveNeighborCount = GetAliveNeighborCount(x, y);
+                    if (cell.IsAlive == false && aliveNeighborCount >= 1)
+                    {
+                        Debug.Log("?");
+                    }
+                }
+            }
         }
     }
 

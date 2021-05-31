@@ -217,22 +217,6 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 413152429}
-    - target: {fileID: 8883973778689793780, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883973778689793780, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883973778689793780, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883973778689793780, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8883973779360946065, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
       propertyPath: m_RootOrder
       value: 1

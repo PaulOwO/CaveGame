@@ -61,22 +61,22 @@ public class Player : MonoBehaviour
     private void TakeInput() // Takes input to move the player
     {
         _direction = Vector2.zero;
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || (Input.GetKey(KeyCode.UpArrow)))
         {
             _direction += Vector2.up;
             _stateDir = State.UP;
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S)|| (Input.GetKey(KeyCode.DownArrow)))
         {
             _direction += Vector2.down;
             _stateDir = State.DOWN;
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A)|| (Input.GetKey(KeyCode.LeftArrow)))
         {
             _direction += Vector2.left;
             _stateDir = State.LEFT;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D)|| (Input.GetKey(KeyCode.RightArrow)))
         {
             _direction += Vector2.right;
             _stateDir = State.RIGHT;
@@ -95,6 +95,7 @@ public class Player : MonoBehaviour
 
     private void TakeDamage()
     {
+        Debug.Log("take damage");
         _health -= _damage;
     }
 }

@@ -47,6 +47,7 @@ public class EnemyShooter : MonoBehaviour
         {
             _bulletInstance = Instantiate(_bulletPrefab, _firePoint.position, _firePoint.rotation);
             _bodyInstance = _bulletInstance.GetComponent<Rigidbody2D>();
+            _bodyInstance.rotation += 180;
             _bodyInstance.AddForce(_firePoint.up * _bulletSpeed, ForceMode2D.Impulse);
             _body.rotation += 1.0f;
             SwitchBullet();
@@ -70,9 +71,10 @@ public class EnemyShooter : MonoBehaviour
     private float _damage = 1.0f;
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Player")
         {
             TakeDamage();
+            
         }
     }
 
