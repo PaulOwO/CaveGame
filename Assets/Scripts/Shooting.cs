@@ -35,7 +35,8 @@ public class Shooting : MonoBehaviour
         _bulletCharged = _bulletCharged - 1f;
         _bulletInstance = Instantiate(_bulletPrefab, _firePoint.position, _firePoint.rotation);
         _bodyInstance = _bulletInstance.GetComponent<Rigidbody2D>();
-        _bodyInstance.AddForce(_firePoint.up * _bulletSpeed, ForceMode2D.Impulse);
+        _bodyInstance.rotation += 180;
+        _bodyInstance.AddForce(_firePoint.right * _bulletSpeed, ForceMode2D.Impulse);
     }
     
     IEnumerator Reload()
