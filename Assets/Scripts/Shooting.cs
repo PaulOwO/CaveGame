@@ -7,12 +7,14 @@ public class Shooting : MonoBehaviour
     [SerializeField] private Transform _firePoint;
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private float _bulletSpeed = 20f;
-    
+    [SerializeField] private AudioSource _reloadSound;
 
     private GameObject _bulletInstance;
     private Rigidbody2D _bodyInstance;
-    private float _bulletCharged = 6f;
-    private bool _reloading = false;
+    
+    public bool _reloading = false;
+    
+    public float _bulletCharged = 6f;
 
     // Update is called once per frame
     void Update()
@@ -41,6 +43,7 @@ public class Shooting : MonoBehaviour
     
     IEnumerator Reload()
     {
+        _reloadSound.Play();
         _reloading = true;
         Debug.Log("Reloading");
         yield return new WaitForSeconds(2f);

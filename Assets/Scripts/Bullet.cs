@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (this.gameObject.tag == "Player")
+        if (this.gameObject.tag == "PlayerBullet")
         {
             if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Wall")
             {

@@ -87,7 +87,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    [SerializeField] private float _health = 3.0f;
+    [SerializeField] public float _health = 3.0f;
+    
     private float _damage = 1.0f;
     void OnCollisionEnter2D(Collision2D collision)
     {

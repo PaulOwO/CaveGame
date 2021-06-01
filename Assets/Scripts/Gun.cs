@@ -10,7 +10,7 @@ public class Gun : MonoBehaviour
     private Vector2 _mousePosition;
     private Vector2 _lookDirection;
 
-    private float _cameraOffSet = -10;
+    private float _cameraOffSet = -5;
     private float _angle;
     private Vector2 movement;
 

@@ -71,7 +71,7 @@ public class EnemyShooter : MonoBehaviour
     private float _damage = 1.0f;
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "PlayerBullet")
         {
             TakeDamage();
             
