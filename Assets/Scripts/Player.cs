@@ -7,12 +7,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _body;
-
+    [SerializeField] private Animator _animator;
     private Vector2 _direction;
     private Vector2 _targetPos;
     private float _angle;
     private float moveSpeed = 20f;
-
+    
 
 
 
@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
 
         TakeInput();
         Move();
+
+        
     }
 
     private void Death()
@@ -53,7 +55,9 @@ public class Player : MonoBehaviour
         transform.Translate(_direction * (moveSpeed * Time.deltaTime));
         if (_direction.x != 0 || _direction.y != 0)                          // PUT DEADZONE HERE
         {
-
+            _animator.SetFloat("Horizontal", _direction.x);
+            _animator.SetFloat("Vertical", _direction.y);
+            _animator.SetFloat("Speed", _direction.SqrMagnitude());
         }
 
     }

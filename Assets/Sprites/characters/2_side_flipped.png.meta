@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 055692be20caf5b4b874151a1e28bb08
+guid: f52f521ce8b7446489d9756dbcb47670
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -837809711005729296
-    second: 2_south2_0
+      213: -1314837976478766895
+    second: 2_side_flipped_0
   - first:
-      213: 294350192437064613
-    second: 2_south2_1
+      213: 8091397801363892896
+    second: 2_side_flipped_1
   - first:
-      213: -6209244205822252296
-    second: 2_south2_2
+      213: 4415738137860727387
+    second: 2_side_flipped_2
   - first:
-      213: -4447964199834581681
-    second: 2_south2_3
+      213: -3178860031254619167
+    second: 2_side_flipped_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -101,13 +101,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2_south2_0
+      name: 2_side_flipped_0
       rect:
         serializedVersion: 2
         x: 2
         y: 1
-        width: 16
-        height: 21
+        width: 15
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,40 +115,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fd712ab1808f54f0800000000000000
-      internalID: -837809711005729296
+      spriteID: 1d82ac2a3d1c0cde0800000000000000
+      internalID: -1314837976478766895
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2_south2_1
+      name: 2_side_flipped_1
       rect:
         serializedVersion: 2
         x: 21
         y: 1
         width: 15
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a377c3c0fdb51400800000000000000
-      internalID: 294350192437064613
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2_south2_2
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 1
-        width: 16
         height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -157,17 +136,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8faef44fa4554d9a0800000000000000
-      internalID: -6209244205822252296
+      spriteID: 0aaeba62e6b6a4070800000000000000
+      internalID: 8091397801363892896
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2_south2_3
+      name: 2_side_flipped_2
       rect:
         serializedVersion: 2
-        x: 59
+        x: 40
         y: 1
         width: 15
         height: 20
@@ -178,8 +157,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4584376028a542c0800000000000000
-      internalID: -4447964199834581681
+      spriteID: b526558d07ad74d30800000000000000
+      internalID: 4415738137860727387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2_side_flipped_3
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 1
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eb9166d4ab62e3d0800000000000000
+      internalID: -3178860031254619167
       vertices: []
       indices: 
       edges: []
