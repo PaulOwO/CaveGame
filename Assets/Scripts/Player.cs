@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-
+        _animator = GetComponent<Animator>();
     }
     void Update()
     {
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         TakeInput();
         Move();
 
-        
+
     }
 
     private void Death()
@@ -55,11 +55,12 @@ public class Player : MonoBehaviour
         transform.Translate(_direction * (moveSpeed * Time.deltaTime));
         if (_direction.x != 0 || _direction.y != 0)                          // PUT DEADZONE HERE
         {
-            _animator.SetFloat("Horizontal", _direction.x);
-            _animator.SetFloat("Vertical", _direction.y);
-            _animator.SetFloat("Speed", _direction.SqrMagnitude());
+            SetAnimatorMove(_direction);
         }
-
+        else
+        {
+            _animator.SetLayerWeight(1, 0);
+        }
     }
 
     private void TakeInput() // Takes input to move the player
@@ -85,6 +86,13 @@ public class Player : MonoBehaviour
             _direction += Vector2.right;
             _stateDir = State.RIGHT;
         }
+    }
+
+    private void SetAnimatorMove(Vector2 _direction)
+    {
+        _animator.SetLayerWeight(1, 1);
+        _animator.SetFloat("Horizontal", _direction.x);
+        _animator.SetFloat("Vertical", _direction.y);
     }
 
     [SerializeField] public float _health = 3.0f;
