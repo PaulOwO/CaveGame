@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
         _shoutingSound.Play();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (this.gameObject.tag == "PlayerBullet")
         {

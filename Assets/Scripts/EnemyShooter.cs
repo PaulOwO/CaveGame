@@ -7,8 +7,11 @@ public class EnemyShooter : MonoBehaviour
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private Rigidbody2D _body;
-    [SerializeField] private float _slowBulletSpeed = 5.0f;
+    [SerializeField] private float _slowBulletSpeed = 8.0f;
     [SerializeField] private float _fastBulletSpeed = 10.0f;
+
+    private const float cooldownPeriod = 1.0f;
+    private float cooldownTime = cooldownPeriod;
    
 
     
@@ -25,10 +28,14 @@ public class EnemyShooter : MonoBehaviour
    
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        
+        cooldownTime += Time.deltaTime;
+        if  (cooldownTime > cooldownPeriod)   //        if  (cooldownTime > cooldownPeriod)   
+
         {
             Shoot();
         }
+        
         
         if (_health < 1)
         {
@@ -45,11 +52,13 @@ public class EnemyShooter : MonoBehaviour
     {
         for (int i = 0; i < 20; i++)
         {
-            _bulletInstance = Instantiate(_bulletPrefab, _firePoint.position, _firePoint.rotation);
+            var rotation = Quaternion.AngleAxis(i / 20.0f * 360, Vector3.forward);
+            var direction = rotation * Vector3.left;
+            _bulletInstance = Instantiate(_bulletPrefab, _firePoint.position, rotation);
             _bodyInstance = _bulletInstance.GetComponent<Rigidbody2D>();
-            _bodyInstance.rotation += 180;
-            _bodyInstance.AddForce(_firePoint.up * _bulletSpeed, ForceMode2D.Impulse);
-            _body.rotation += 1.0f;
+            _bodyInstance.AddForce(direction * _bulletSpeed, ForceMode2D.Impulse);
+            cooldownTime = 0.0f;
+            _body.rotation += 18;
             SwitchBullet();
         }
     }
@@ -69,7 +78,7 @@ public class EnemyShooter : MonoBehaviour
     
     [SerializeField] private float _health = 6.0f;
     private float _damage = 1.0f;
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "PlayerBullet")
         {

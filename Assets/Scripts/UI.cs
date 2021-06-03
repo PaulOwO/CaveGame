@@ -20,7 +20,7 @@ public class UI : MonoBehaviour
        
         if (_shooting._reloading == true)
         {
-            _bulletCounterText.text = "Bullet : Realoading" ;
+            _bulletCounterText.text = "Bullet : Reloading" ;
         }
         else
         {

@@ -7,10 +7,11 @@ public class Gun : MonoBehaviour
     [SerializeField] private Rigidbody2D _body;
     [SerializeField] private Camera _camera;
     [SerializeField] private Transform _cursor;
+    [SerializeField] private float _cameraOffSet = -10;
     private Vector2 _mousePosition;
     private Vector2 _lookDirection;
 
-    private float _cameraOffSet = -5;
+    
     private float _angle;
     private Vector2 movement;
 

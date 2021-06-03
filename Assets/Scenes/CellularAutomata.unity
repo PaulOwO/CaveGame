@@ -250,7 +250,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellBehaviorPrefab: {fileID: 4604854717111381416, guid: 87e7e41d9ee73b84ca40a42771f4a405, type: 3}
-  groundBehaviorPrefab: {fileID: -7485693507805888447, guid: db37867bfed9466419e4bfc3d686f93b, type: 3}
   width: 50
   height: 50
   aliveToDeathConversion: 4
@@ -260,3 +259,4 @@ MonoBehaviour:
   seed: 111
   randomFillFactor: 0.5
   passageRadius: 1
+  _wallPrefab: {fileID: 5200851158140933075, guid: db37867bfed9466419e4bfc3d686f93b, type: 3}

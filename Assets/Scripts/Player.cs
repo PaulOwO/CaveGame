@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _body;
     [SerializeField] private Animator _animator;
+    [SerializeField] private SpriteRenderer _sprite;
     private Vector2 _direction;
     private Vector2 _targetPos;
     private float _angle;
@@ -23,8 +24,7 @@ public class Player : MonoBehaviour
         LEFT,
         RIGHT
     };
-
-    private State _stateDir;
+    
 
     void Start()
     {
@@ -68,29 +68,25 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W) || (Input.GetKey(KeyCode.UpArrow)))
         {
             _direction += Vector2.up;
-            _stateDir = State.UP;
         }
         if (Input.GetKey(KeyCode.S)|| (Input.GetKey(KeyCode.DownArrow)))
         {
             _direction += Vector2.down;
-            _stateDir = State.DOWN;
         }
         if (Input.GetKey(KeyCode.A)|| (Input.GetKey(KeyCode.LeftArrow)))
         {
             _direction += Vector2.left;
-            _stateDir = State.LEFT;
         }
         if (Input.GetKey(KeyCode.D)|| (Input.GetKey(KeyCode.RightArrow)))
         {
             _direction += Vector2.right;
-            _stateDir = State.RIGHT;
         }
     }
 
     [SerializeField] public float _health = 3.0f;
     
     private float _damage = 1.0f;
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
@@ -101,6 +97,7 @@ public class Player : MonoBehaviour
     private void TakeDamage()
     {
         Debug.Log("take damage");
+        _sprite.color = Color.red;
         _health -= _damage;
     }
 }
