@@ -18,7 +18,7 @@ public class CellBehavior : MonoBehaviour
 
     private void Start()
     {
-       // spriteRenderer.sprite = _sprites[Random.Range(0, _sprites.Length)];
+        spriteRenderer.sprite = _sprites[Random.Range(0, _sprites.Length)];
     }
     public bool IsAlive
     {

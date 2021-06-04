@@ -159,7 +159,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -172,11 +172,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 1
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -260,3 +260,8 @@ MonoBehaviour:
   randomFillFactor: 0.5
   passageRadius: 1
   _wallPrefab: {fileID: 5200851158140933075, guid: db37867bfed9466419e4bfc3d686f93b, type: 3}
+  _startPrefab: {fileID: 630116023364761305, guid: a50e2c7b3891fce4fb5d167980d25806, type: 3}
+  _spawnPoint: {fileID: 630116023364761304, guid: a50e2c7b3891fce4fb5d167980d25806, type: 3}
+  _endPrefab: {fileID: 445939368656406202, guid: 852855a39e4b3824d8dd0e6da8c67e86, type: 3}
+  _player: {fileID: 8883973779360946071, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
+  hotPathThreshold: 10

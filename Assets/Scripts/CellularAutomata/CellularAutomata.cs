@@ -30,8 +30,142 @@ public class CellularAutomata : MonoBehaviour
     [SerializeField] private int passageRadius = 1;
     
     [SerializeField] private GameObject _wallPrefab;
+    [SerializeField] private GameObject _startPrefab;
+    [SerializeField] private GameObject _endPrefab;
 
-    public class Region : System.IComparable<Region>
+    private Vector2Int startingPoint;
+    private Vector2Int endPoint;
+    private List<Vector2Int> path;
+    private int[,] distanceFromPath;
+    [SerializeField] private int hotPathThreshold = 10;
+
+    void GeneratePath()
+        {
+            Vector3 startPosition = new Vector3((startingPoint.x-width/2)*cellSize,(startingPoint.y-height/2)*cellSize, 0.0f);
+            Instantiate(_startPrefab, startPosition, Quaternion.identity, transform);
+            Vector3 endPosition = new Vector3((endPoint.x-width/2)*cellSize,(endPoint.y-height/2)*cellSize, 0.0f);
+            Instantiate(_endPrefab, endPosition, Quaternion.identity, transform);
+            path = new List<Vector2Int>();
+            Queue<Vector2Int> nextPosition = new Queue<Vector2Int>();
+            Dictionary<Vector2Int, Vector2Int> comeFrom = new Dictionary<Vector2Int, Vector2Int>();
+            nextPosition.Enqueue(startingPoint);
+            var deltas = new Vector2Int[]
+            {
+                Vector2Int.right,
+                Vector2Int.up, 
+                Vector2Int.down,
+                Vector2Int.left
+            };
+            Vector2Int currentPos = Vector2Int.zero;
+            
+            while (nextPosition.Count > 0)
+            {
+                currentPos = nextPosition.Dequeue();
+                if (currentPos == endPoint)
+                {
+                    break;
+                }
+
+                foreach (var delta in deltas)
+                {
+                    var neighborPos = currentPos + delta;
+                    if(neighborPos.x < 0 || neighborPos.y < 0 || neighborPos.x >= width || neighborPos.y >= height)
+                        continue;
+                    if (neighborPos == startingPoint || comeFrom.ContainsKey(neighborPos))
+                    {
+                        continue;
+                    }
+                    if(!cells[neighborPos.x, neighborPos.y].isAlive)
+                        continue;
+                    comeFrom[neighborPos] = currentPos;
+                    nextPosition.Enqueue(neighborPos);
+                }
+                
+            }
+
+            if (currentPos != endPoint)
+            {
+                throw new Exception("No path found!");
+                return;
+            }
+
+            while (currentPos != startingPoint)
+            {
+                path.Add(currentPos);
+                currentPos = comeFrom[currentPos];
+            }
+            path.Add(startingPoint);
+            path.Reverse();
+            /*foreach (var point in path)
+            {
+                //llViews[point.x, point.y].UpdateColor(Color.red);
+            }*/
+
+        }
+     
+     private void GenerateDistanceFromPath()
+        {
+            distanceFromPath = new int[width, height];
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    distanceFromPath[i, j] = -1;
+                }
+            }
+
+            foreach (var point in path)
+            {
+                distanceFromPath[point.x, point.y] = 0;
+            }
+            
+            foreach (var pathPoint in path)
+            {
+                Queue<Vector2Int> nextPosition = new Queue<Vector2Int>();
+                Dictionary<Vector2Int, int> costSoFar = new Dictionary<Vector2Int, int>();
+                costSoFar[pathPoint] = 0;
+                nextPosition.Enqueue(pathPoint);
+                var deltas = new[]
+                {
+                    Vector2Int.right,
+                    Vector2Int.up, 
+                    Vector2Int.down,
+                    Vector2Int.left
+                };
+
+                while (nextPosition.Count > 0)
+                {
+                    var currentPos = nextPosition.Dequeue();
+
+                    foreach (var delta in deltas)
+                    {
+                        var neighborPos = currentPos + delta;
+                        if(neighborPos.x < 0 || neighborPos.y < 0 || neighborPos.x >= width || neighborPos.y >= height)
+                            continue;
+                        if (costSoFar.ContainsKey(neighborPos))
+                        {
+                            continue;
+                        }
+                        if(!cells[neighborPos.x, neighborPos.y].isAlive)
+                            continue;
+                        var cost = costSoFar[currentPos]+1;
+                        costSoFar[neighborPos] = cost;
+                        if (distanceFromPath[neighborPos.x, neighborPos.y] == -1 ||
+                             cost < distanceFromPath[neighborPos.x, neighborPos.y])
+                        {
+                            
+                            // color for hot path
+                            /*distanceFromPath[neighborPos.x, neighborPos.y] = cost;
+                           cellViews[neighborPos.x, neighborPos.y].UpdateColor(
+                                cost < hotPathThreshold ? Color.yellow : Color.gray);*/
+                        }
+                        nextPosition.Enqueue(neighborPos);
+                    }
+                }
+            }
+        }
+
+     public class Region : System.IComparable<Region>
     {
         private List<Vector2Int> tiles = new List<Vector2Int>();
         public List<Vector2Int> Tiles => tiles;
@@ -104,6 +238,8 @@ public class CellularAutomata : MonoBehaviour
     void Start()
     {
         Init();
+        GeneratePath();
+        GenerateDistanceFromPath();
     }
 
     protected virtual void Init()
@@ -219,6 +355,21 @@ public class CellularAutomata : MonoBehaviour
 
     protected virtual void ConnectClosestRegions()
     {
+        //Add starting and end region
+        startingPoint = new Vector2Int(0, Random.Range(0, height));
+        cells[startingPoint.x, startingPoint.y].isAlive = true;
+        cellViews[startingPoint.x, startingPoint.y].IsAlive = true;
+        Region startingRegion = new Region();
+        startingRegion.AddTile(startingPoint);
+        Regions.Add(startingRegion);
+            
+        endPoint = new Vector2Int(width-1, Random.Range(0, height));
+        cells[endPoint.x, endPoint.y].isAlive = true;
+        cellViews[endPoint.x, endPoint.y].IsAlive = true;
+        Region endRegion = new Region();
+        endRegion.AddTile(endPoint);
+        Regions.Add(endRegion);
+        
         foreach (var regionA in regions_)
         {
             var possibleConnectionFound = false;
@@ -258,6 +409,7 @@ public class CellularAutomata : MonoBehaviour
             if (possibleConnectionFound)
             {
                 CreatePassage(regionA, bestRegionB, bestTileA, bestTileB);
+                
             }
         }
     }
@@ -425,8 +577,8 @@ public class CellularAutomata : MonoBehaviour
         void FillRegion(int x, int y)
         {
             Region region = new Region();
-            Color color = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
-            region.Color = color;
+            //Color color = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
+            //region.Color = color;
             Vector2Int pos = new Vector2Int(x, y);
             Vector2Int[] dpos = new Vector2Int[4]
             {
@@ -442,7 +594,7 @@ public class CellularAutomata : MonoBehaviour
                 Vector2Int currentPos = nextPosQueue.Dequeue();
                 
                 visited[currentPos.x, currentPos.y] = true;
-                cellViews[currentPos.x, currentPos.y].UpdateColor(color);
+                //cellViews[currentPos.x, currentPos.y].UpdateColor(color);
                 region.AddTile(currentPos);
                 foreach (var delta in dpos)
                 {

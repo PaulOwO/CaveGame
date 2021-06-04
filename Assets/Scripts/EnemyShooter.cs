@@ -7,11 +7,14 @@ public class EnemyShooter : MonoBehaviour
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private Rigidbody2D _body;
-    [SerializeField] private float _slowBulletSpeed = 8.0f;
-    [SerializeField] private float _fastBulletSpeed = 10.0f;
+    [SerializeField] private float _slowBulletSpeed = 2.0f;
+    [SerializeField] private float _fastBulletSpeed = 5.0f;
+    [SerializeField] private SpriteRenderer _sprite;
 
-    private const float cooldownPeriod = 1.0f;
-    private float cooldownTime = cooldownPeriod;
+    private const float shootPeriod = 1.0f;
+    private float shootCooldownTime = shootPeriod;
+    private const float colorPeriod = 0.25f;
+    private float colorCooldownTime = colorPeriod;
    
 
     
@@ -29,8 +32,15 @@ public class EnemyShooter : MonoBehaviour
     void Update()
     {
         
-        cooldownTime += Time.deltaTime;
-        if  (cooldownTime > cooldownPeriod)   //        if  (cooldownTime > cooldownPeriod)   
+        shootCooldownTime += Time.deltaTime;
+        colorCooldownTime += Time.deltaTime;
+
+        if (_sprite.color == Color.yellow && colorCooldownTime > colorPeriod)
+        {
+            _sprite.color = Color.white;
+        }
+        
+        if  (shootCooldownTime > shootPeriod)   //        if  (cooldownTime > cooldownPeriod)   
 
         {
             Shoot();
@@ -57,7 +67,7 @@ public class EnemyShooter : MonoBehaviour
             _bulletInstance = Instantiate(_bulletPrefab, _firePoint.position, rotation);
             _bodyInstance = _bulletInstance.GetComponent<Rigidbody2D>();
             _bodyInstance.AddForce(direction * _bulletSpeed, ForceMode2D.Impulse);
-            cooldownTime = 0.0f;
+            shootCooldownTime = 0.0f;
             _body.rotation += 18;
             SwitchBullet();
         }
@@ -89,6 +99,8 @@ public class EnemyShooter : MonoBehaviour
 
     private void TakeDamage()
     {
+        _sprite.color = Color.yellow;
         _health -= _damage;
+        colorCooldownTime = 0;
     }
 }

@@ -182,7 +182,7 @@ MonoBehaviour:
   _body: {fileID: 603728801}
   _camera: {fileID: 0}
   _cursor: {fileID: 486941633}
-  _cameraOffSet: -5
+  _cameraOffSet: -1
 --- !u!50 &603728801
 Rigidbody2D:
   serializedVersion: 4
@@ -246,6 +246,7 @@ GameObject:
   - component: {fileID: 8883973779360946067}
   - component: {fileID: 8883973779360946092}
   - component: {fileID: 8883973779360946064}
+  - component: {fileID: 882808108237047283}
   - component: {fileID: 8883973779360946066}
   - component: {fileID: 641420319421337268}
   - component: {fileID: 7531807427442845027}
@@ -265,8 +266,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8883973779360946071}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 3.478, y: 0.181, z: 0}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 603728799}
   - {fileID: 486941633}
@@ -287,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _body: {fileID: 8883973779360946066}
   _animator: {fileID: 7531807427442845027}
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 8883973779360946064}
   _health: 3
 --- !u!114 &8883973779360946092
 MonoBehaviour:
@@ -303,7 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firePoint: {fileID: 8883973778689793780}
   _bulletPrefab: {fileID: 2216221433008379097, guid: 5b147c6c1fdf2e045bca5b5f31228b22, type: 3}
-  _bulletSpeed: 20
+  _bulletSpeed: 3
   _reloadSound: {fileID: 1926815997}
   _reloading: 0
   _bulletCharged: 6
@@ -346,7 +347,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 101878740fc5855478ea47e8da49b4ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -358,6 +359,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &882808108237047283
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8883973779360946071}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2.625}
+    newSize: {x: 12, y: 12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2.625}
+  m_EdgeRadius: 0
 --- !u!50 &8883973779360946066
 Rigidbody2D:
   serializedVersion: 4
@@ -389,7 +416,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -403,7 +430,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9075367, y: 2.4734526}
+  m_Size: {x: 1.08, y: 2.07}
   m_EdgeRadius: 0
 --- !u!95 &7531807427442845027
 Animator:

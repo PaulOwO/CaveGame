@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1381977682432572845}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 32.6, y: -1.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 1381977683106971863}
   m_Father: {fileID: 0}
@@ -150,6 +150,7 @@ MonoBehaviour:
   _body: {fileID: 1381977682432572881}
   _slowBulletSpeed: 5
   _fastBulletSpeed: 10
+  _sprite: {fileID: 1381977682432572883}
   _health: 6
 --- !u!1 &1381977683106971862
 GameObject:

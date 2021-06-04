@@ -17,7 +17,7 @@ public class Gun : MonoBehaviour
 
     void Start()
     {
-
+     _camera = Camera.main;
     }
 
 

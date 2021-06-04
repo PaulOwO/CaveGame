@@ -15,6 +15,7 @@ public class Shooting : MonoBehaviour
     public bool _reloading = false;
     
     public float _bulletCharged = 6f;
+    
 
     // Update is called once per frame
     void Update()
