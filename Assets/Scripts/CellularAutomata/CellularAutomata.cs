@@ -356,14 +356,14 @@ public class CellularAutomata : MonoBehaviour
     protected virtual void ConnectClosestRegions()
     {
         //Add starting and end region
-        startingPoint = new Vector2Int(0, Random.Range(0, height));
+        startingPoint = new Vector2Int(0, Random.Range(5, height - 5)); //Is for the spawn point to not be in corners
         cells[startingPoint.x, startingPoint.y].isAlive = true;
         cellViews[startingPoint.x, startingPoint.y].IsAlive = true;
         Region startingRegion = new Region();
         startingRegion.AddTile(startingPoint);
         Regions.Add(startingRegion);
             
-        endPoint = new Vector2Int(width-1, Random.Range(0, height));
+        endPoint = new Vector2Int(width-1, Random.Range(5, height - 5)); //Same
         cells[endPoint.x, endPoint.y].isAlive = true;
         cellViews[endPoint.x, endPoint.y].IsAlive = true;
         Region endRegion = new Region();

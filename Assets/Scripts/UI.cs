@@ -24,7 +24,7 @@ public class UI : MonoBehaviour
         }
         else
         {
-            _bulletCounterText.text = "Bullet :" + _shooting._bulletCharged;
+            _bulletCounterText.text = "Bullet : " + _shooting._bulletCharged;
         }
 
     }

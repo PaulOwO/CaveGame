@@ -250,18 +250,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellBehaviorPrefab: {fileID: 4604854717111381416, guid: 87e7e41d9ee73b84ca40a42771f4a405, type: 3}
-  width: 50
+  width: 100
   height: 50
   aliveToDeathConversion: 4
   deathToAliveConversion: 4
   roomSurvivalThreshold: 9
   showcase: 0
-  seed: 111
+  seed: 0
   randomFillFactor: 0.5
   passageRadius: 1
   _wallPrefab: {fileID: 5200851158140933075, guid: db37867bfed9466419e4bfc3d686f93b, type: 3}
   _startPrefab: {fileID: 630116023364761305, guid: a50e2c7b3891fce4fb5d167980d25806, type: 3}
-  _spawnPoint: {fileID: 630116023364761304, guid: a50e2c7b3891fce4fb5d167980d25806, type: 3}
   _endPrefab: {fileID: 445939368656406202, guid: 852855a39e4b3824d8dd0e6da8c67e86, type: 3}
-  _player: {fileID: 8883973779360946071, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
   hotPathThreshold: 10

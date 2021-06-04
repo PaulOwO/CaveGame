@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     private float _angle;
     private float moveSpeed = 1f;
     
-    private const float _invicibilityPeriod = 1.0f;
+    private const float _invicibilityPeriod = 1.5f;
     private float cooldownTime = _invicibilityPeriod;
 
 
@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
     private float _damage = 1.0f;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.tag == "EnemyBullet") && (cooldownTime > _invicibilityPeriod))
+        if ((collision.gameObject.tag == "EnemyBullet") /*|| (collision.gameObject.tag == "Enemy")*/ && (cooldownTime > _invicibilityPeriod))
         {
             TakeDamage();
         }

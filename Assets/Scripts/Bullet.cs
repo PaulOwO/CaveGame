@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
             }
         }
 
-        if (this.gameObject.tag == "Enemy")
+        if (this.gameObject.tag == "EnemyBullet")
         {
             if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Wall")
             {
