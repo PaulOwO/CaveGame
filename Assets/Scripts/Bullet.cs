@@ -6,6 +6,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private AudioSource _shoutingSound;
+    [SerializeField] private GameObject _explosionPrefab;
     private void Start()
     {
         _shoutingSound.Play();
@@ -18,6 +19,8 @@ public class Bullet : MonoBehaviour
             if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Wall")
             {
                 //Debug.Log("destroy bullet");
+                GameObject _animation = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+                Destroy(_animation, 5f);
                 Destroy(this.gameObject);
             }
         }
@@ -27,6 +30,8 @@ public class Bullet : MonoBehaviour
             if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Wall")
             {
                 //Debug.Log("destroy bullet");
+                GameObject _animation = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+                Destroy(_animation, 5f);
                 Destroy(this.gameObject);
             }
         }

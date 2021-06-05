@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PaulScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 93345bc95beccbb4cb1131faf3f41e15
+  - enabled: 1
+    path: Assets/Scenes/CellularAutomata.unity
+    guid: 19c868960a62fb44680ad11b54936c2b
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: 64eae56ff6bd4c44daebf8f10807f802
+  - enabled: 1
+    path: Assets/Scenes/Defeat.unity
+    guid: d661aecb5014db642938df9f851fc924
   m_configObjects: {}

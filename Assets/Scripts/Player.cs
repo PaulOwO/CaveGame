@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Player : MonoBehaviour
@@ -9,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody2D _body;
     [SerializeField] private Animator _animator;
     [SerializeField] private SpriteRenderer _sprite;
+    [SerializeField] private GameObject _explosionPrefab;
     private Vector2 _direction;
     private Vector2 _targetPos;
     private float _angle;
@@ -54,7 +56,11 @@ public class Player : MonoBehaviour
 
     private void Death()
     {
+        GameObject _animation = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+        Destroy(_animation, 5f);
         Destroy(gameObject);
+        SceneManager.LoadScene("Defeat");
+
     }
 
 

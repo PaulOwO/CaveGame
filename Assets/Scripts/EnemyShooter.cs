@@ -10,6 +10,7 @@ public class EnemyShooter : MonoBehaviour
     [SerializeField] private float _slowBulletSpeed = 2.0f;
     [SerializeField] private float _fastBulletSpeed = 5.0f;
     [SerializeField] private SpriteRenderer _sprite;
+    [SerializeField] private GameObject _explosionPrefab;
 
     private const float shootPeriod = 1.0f;
     private float shootCooldownTime = shootPeriod;
@@ -55,7 +56,9 @@ public class EnemyShooter : MonoBehaviour
     
     private void Death()
     {
-        Destroy(gameObject);
+        GameObject _animation = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+        Destroy(_animation, 5f);
+        Destroy(this.gameObject);
     }
 
     private void Shoot()

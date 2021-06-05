@@ -576,14 +576,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1381977682432572886, guid: c7a48d7f4b87a614d9b040b09a0769e6, type: 3}
-      propertyPath: _fastBulletSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1381977682432572886, guid: c7a48d7f4b87a614d9b040b09a0769e6, type: 3}
-      propertyPath: _slowBulletSpeed
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7a48d7f4b87a614d9b040b09a0769e6, type: 3}
 --- !u!1001 &349436266
@@ -2858,10 +2850,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 603728801, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
-      propertyPath: m_BodyType
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 603728802, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
       propertyPath: _camera
       value: 

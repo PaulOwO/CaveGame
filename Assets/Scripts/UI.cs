@@ -17,6 +17,7 @@ public class UI : MonoBehaviour
     void Update()
     {
         _healthText.text = "HEALTH : " + _player._health;
+        //_player = new Player();
        
         if (_shooting._reloading == true)
         {

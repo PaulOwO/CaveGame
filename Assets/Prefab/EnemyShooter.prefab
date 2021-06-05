@@ -148,9 +148,10 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 3027089482225174281, guid: b6a5341a23e6ffe459fafd9d5c55fb04, type: 3}
   _firePoint: {fileID: 1381977683106971863}
   _body: {fileID: 1381977682432572881}
-  _slowBulletSpeed: 5
-  _fastBulletSpeed: 10
+  _slowBulletSpeed: 2
+  _fastBulletSpeed: 5
   _sprite: {fileID: 1381977682432572883}
+  _explosionPrefab: {fileID: 7638317843236491221, guid: d8489f04e83b68947b65a2c87f5c9d8e, type: 3}
   _health: 6
 --- !u!1 &1381977683106971862
 GameObject:
