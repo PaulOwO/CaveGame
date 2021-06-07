@@ -11,16 +11,15 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] private GameObject _explosionPrefab;
+    private float _health = 3.0f;
     private Vector2 _direction;
     private Vector2 _targetPos;
     private float _angle;
     private float _moveSpeed = 1f;
-    
     private const float _invicibilityPeriod = 1.5f;
     private float _cooldownTime = _invicibilityPeriod;
-
-
-
+    [SerializeField] private UI _ui;
+    
     public enum State
     {
         UP,
@@ -29,11 +28,14 @@ public class Player : MonoBehaviour
         RIGHT
     };
     
-
     void Start()
     {
+        _ui = FindObjectOfType<UI>();
+        _ui.Health = _health;
+        _ui.UpdateUI();
         _animator = GetComponent<Animator>();
     }
+    
     void Update()
     {
         _cooldownTime += Time.deltaTime;
@@ -50,8 +52,6 @@ public class Player : MonoBehaviour
 
         TakeInput();
         Move();
-
-
     }
 
     private void Death()
@@ -60,10 +60,8 @@ public class Player : MonoBehaviour
         Destroy(_animation, 5f);
         Destroy(gameObject);
         SceneManager.LoadScene("Defeat");
-
     }
-
-
+    
     private void Move() //Moves the player
     {
         transform.Translate(_direction * (_moveSpeed * Time.deltaTime));
@@ -105,8 +103,6 @@ public class Player : MonoBehaviour
         _animator.SetFloat("Vertical", _direction.y);
     }
 
-    [SerializeField] public float _health = 3.0f;
-    
     private float _damage = 1.0f;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -122,5 +118,7 @@ public class Player : MonoBehaviour
         _sprite.color = Color.red;
         _health -= _damage;
         _cooldownTime = 0f;
+        _ui.Health = _health;
+        _ui.UpdateUI();
     }
 }

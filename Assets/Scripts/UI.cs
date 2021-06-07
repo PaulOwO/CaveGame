@@ -4,29 +4,39 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using TMPro;
+using UnityEngine.PlayerLoop;
 
 
 public class UI : MonoBehaviour
 {
     [SerializeField] private Text _bulletCounterText;
     [SerializeField] private Text _healthText;
-    [SerializeField] private Player _player;
-    [SerializeField] private Shooting _shooting;
 
-    // Update is called once per frame
-    void Update()
+    private float _health = 0;
+    private float _bullet = 0;
+
+    public float Health
     {
-        _healthText.text = "HEALTH : " + _player._health;
-        //_player = new Player();
-       
-        if (_shooting._reloading == true)
+        get => _health;
+        set => _health = value;
+    }
+
+    public float Bullet
+    {
+        get => _bullet;
+        set => _bullet = value;
+    }
+    
+    public void UpdateUI()
+    {
+        _healthText.text = "HEALTH : " + _health;
+        if (_bullet == -1)
         {
-            _bulletCounterText.text = "Bullet : Reloading" ;
+            _bulletCounterText.text = "Bullet : Reloading";
         }
         else
         {
-            _bulletCounterText.text = "Bullet : " + _shooting._bulletCharged;
+            _bulletCounterText.text = "Bullet : " + _bullet;
         }
-
     }
 }

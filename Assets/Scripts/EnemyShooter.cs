@@ -7,18 +7,14 @@ public class EnemyShooter : MonoBehaviour
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Transform _firePoint;
     [SerializeField] private Rigidbody2D _body;
-    [SerializeField] private float _slowBulletSpeed = 2.0f;
-    [SerializeField] private float _fastBulletSpeed = 5.0f;
+    [SerializeField] private float _slowBulletSpeed = 0.5f;
+    [SerializeField] private float _fastBulletSpeed = 0.80f;
     [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] private GameObject _explosionPrefab;
-
     private const float _shootPeriod = 1.0f;
     private float _shootCooldownTime = _shootPeriod;
     private const float _colorPeriod = 0.25f;
     private float _colorCooldownTime = _colorPeriod;
-   
-
-    
     private GameObject _bulletInstance;
     private Rigidbody2D _bodyInstance;
     private float _bulletSpeed;
@@ -32,7 +28,6 @@ public class EnemyShooter : MonoBehaviour
    
     void Update()
     {
-        
         _shootCooldownTime += Time.deltaTime;
         _colorCooldownTime += Time.deltaTime;
 
@@ -46,7 +41,6 @@ public class EnemyShooter : MonoBehaviour
         {
             Shoot();
         }
-        
         
         if (_health < 1)
         {
@@ -96,7 +90,6 @@ public class EnemyShooter : MonoBehaviour
         if (collision.gameObject.tag == "PlayerBullet")
         {
             TakeDamage();
-            
         }
     }
 

@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
             {
                 //Debug.Log("destroy bullet");
                 GameObject _animation = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-                Destroy(_animation, 5f);
+                Destroy(_animation, 0.5f);
                 Destroy(this.gameObject);
             }
         }
@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
             {
                 //Debug.Log("destroy bullet");
                 GameObject _animation = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-                Destroy(_animation, 5f);
+                Destroy(_animation, 0.5f);
                 Destroy(this.gameObject);
             }
         }

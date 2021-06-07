@@ -171,18 +171,18 @@ public class CellularAutomata : MonoBehaviour
     {
         private List<Vector2Int> tiles = new List<Vector2Int>();
         public List<Vector2Int> Tiles => tiles;
-        private Color color_;
+       // private Color color_;
         public int Count => tiles.Count;
 
         private List<Region> connectedRooms = new List<Region>();
 
         private bool connectedToMainRoom = false;
         private bool isMainRoom = false;
-        public Color Color
+       /* public Color Color
         {
             get => color_;
             set => color_ = value;
-        }
+        }*/
 
         public bool ConnectedToMainRoom
         {
@@ -293,6 +293,10 @@ public class CellularAutomata : MonoBehaviour
                         cellViews[pos.x, pos.y].IsAlive = false;
                     }
                 }
+                else
+                {
+                    SpawnEnemiesInRegion(region);
+                }
             }
 
             regions_.RemoveAll(region => region.Count < roomSurvivalThreshold);
@@ -373,11 +377,24 @@ public class CellularAutomata : MonoBehaviour
         Regions.Add(endRegion);
         
         //Add enemy
-
-       /* foreach (var tiles  in Regions)
+        
+        
+        /*for (int x = 0; x < width; x += 15)
         {
-            Instantiate(_enemyShooter);
+            for (int y = 0; y < height; y += 15)
+            {
+                if (cells[x, y].isAlive)
+                {
+                    Vector3 position = new Vector3((x-width/2)*cellSize,(y-height/2)*cellSize, 0.0f);
+                    Instantiate(_enemyShooter, position, Quaternion.identity, transform);
+                }
+            }
         }*/
+
+        /* foreach (var tiles  in Regions)
+         {
+             Instantiate(_enemyShooter);
+         }*/
         
         foreach (var regionA in regions_)
         {
@@ -622,7 +639,6 @@ public class CellularAutomata : MonoBehaviour
                 }
             }
             regions_.Add(region);
-
         }
         for (int x = 0; x < width; x++)
         {
@@ -640,6 +656,11 @@ public class CellularAutomata : MonoBehaviour
         System.DateTime end = System.DateTime.Now;
         System.TimeSpan ts = (end - start);
         Debug.Log("Flooding Elapsed Time is "+ts.TotalMilliseconds+"ms");
+    }
+
+    private void SpawnEnemiesInRegion(Region region)
+    {
+        
     }
 
     int GetAliveNeighborCount(int currentX, int currentY)

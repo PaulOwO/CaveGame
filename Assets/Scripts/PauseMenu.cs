@@ -26,33 +26,34 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void Resume()
+    private void Resume()
     {
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         _gameIsPaused = false;
     }
 
-    public void Retry()
+    private void Retry()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("CellularAutomata");
     }
 
-    public void Pause()
+    private void Pause()
     {
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         _gameIsPaused = true;
     }
 
-    public void LoadMenu()
+    private void LoadMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
         Debug.Log("Loading Menu");
     }
 
-    public void QuitGame()
+    private void QuitGame()
     {
         Application.Quit();
         Debug.Log("Quitting game");

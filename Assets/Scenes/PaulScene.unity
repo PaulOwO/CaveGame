@@ -1273,7 +1273,7 @@ GameObject:
   - component: {fileID: 682587605}
   - component: {fileID: 682587607}
   - component: {fileID: 682587606}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1296,8 +1296,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -843.1, y: 520.36}
-  m_SizeDelta: {x: 233.74005, y: 39.276062}
+  m_AnchoredPosition: {x: -822.59, y: 511.32}
+  m_SizeDelta: {x: 274.76263, y: 57.358307}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &682587606
 MonoBehaviour:
@@ -1321,11 +1321,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1409,7 +1409,7 @@ GameObject:
   - component: {fileID: 737179316}
   - component: {fileID: 737179318}
   - component: {fileID: 737179317}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1432,8 +1432,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -820.1, y: -514.93}
-  m_SizeDelta: {x: 279.80652, y: 50.13318}
+  m_AnchoredPosition: {x: -812.01, y: -510.65}
+  m_SizeDelta: {x: 295.9839, y: 58.69983}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &737179317
 MonoBehaviour:
@@ -1457,7 +1457,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -2558,7 +2558,7 @@ GameObject:
   - component: {fileID: 1923619788}
   - component: {fileID: 1923619790}
   - component: {fileID: 1923619791}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2608,30 +2608,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletCounterText: {fileID: 737179317}
   _healthText: {fileID: 682587606}
-  _player: {fileID: 1926815995}
-  _shooting: {fileID: 1926815994}
---- !u!114 &1926815994 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8883973779360946092, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
-  m_PrefabInstance: {fileID: 2085759655}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c525a525325d7994497a8f5f4a96366b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1926815995 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8883973779360946067, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
-  m_PrefabInstance: {fileID: 2085759655}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 902270da76e39f749a4f7ce239d99acb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1927451184
 Transform:
   m_ObjectHideFlags: 0
@@ -2898,10 +2874,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8883973779360946067, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
+      propertyPath: _ui
+      value: 
+      objectReference: {fileID: 1923619791}
     - target: {fileID: 8883973779360946071, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8883973779360946092, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
+      propertyPath: _ui
+      value: 
+      objectReference: {fileID: 1923619791}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 068a4ab26a70db84389a6b5ede7ef6f9, type: 3}
 --- !u!1001 &2095379212

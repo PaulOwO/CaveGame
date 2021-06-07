@@ -6,20 +6,20 @@ using UnityEngine.SceneManagement;
 public class EndMenu : MonoBehaviour
 {
    
-    public void LoadMenu()
+    private void LoadMenu()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
         Debug.Log("Loading Menu");
     }
     
-    public void QuitGame()
+    private void QuitGame()
     {
         Application.Quit();
         Debug.Log("Quitting game");
     }
     
-    public void Retry()
+    private void Retry()
     {
         SceneManager.LoadScene("CellularAutomata");
     }
