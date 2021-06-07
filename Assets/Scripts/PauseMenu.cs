@@ -6,7 +6,7 @@ using InControl;
 
 public class PauseMenu : MonoBehaviour
 {
-    private bool GameIsPaused = false; 
+    private bool _gameIsPaused = false; 
 
     [SerializeField] GameObject PauseMenuUI;
 
@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.Escape)) || (InputManager.ActiveDevice.Action3.WasPressed))
         {
-            if (GameIsPaused)
+            if (_gameIsPaused)
             {
                 Resume();
             }
@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
     {
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        GameIsPaused = false;
+        _gameIsPaused = false;
     }
 
     public void Retry()
@@ -42,7 +42,7 @@ public class PauseMenu : MonoBehaviour
     {
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        GameIsPaused = true;
+        _gameIsPaused = true;
     }
 
     public void LoadMenu()

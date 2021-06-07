@@ -32,12 +32,14 @@ public class CellularAutomata : MonoBehaviour
     [SerializeField] private GameObject _wallPrefab;
     [SerializeField] private GameObject _startPrefab;
     [SerializeField] private GameObject _endPrefab;
+    [SerializeField] private GameObject _enemyShooter;
+    [SerializeField] private GameObject _enemyChasser;
 
     private Vector2Int startingPoint;
     private Vector2Int endPoint;
     private List<Vector2Int> path;
     private int[,] distanceFromPath;
-    [SerializeField] private int hotPathThreshold = 10;
+    //[SerializeField] private int hotPathThreshold = 10;
 
     void GeneratePath()
         {
@@ -369,6 +371,13 @@ public class CellularAutomata : MonoBehaviour
         Region endRegion = new Region();
         endRegion.AddTile(endPoint);
         Regions.Add(endRegion);
+        
+        //Add enemy
+
+       /* foreach (var tiles  in Regions)
+        {
+            Instantiate(_enemyShooter);
+        }*/
         
         foreach (var regionA in regions_)
         {

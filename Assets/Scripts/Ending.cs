@@ -23,6 +23,6 @@ public class Ending : MonoBehaviour
 
     private void EndGame()
     {
-        SceneManager.LoadScene("CellularAutomata");
+        SceneManager.LoadScene("Victory");
     }
 }

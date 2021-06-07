@@ -12,10 +12,10 @@ public class EnemyShooter : MonoBehaviour
     [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] private GameObject _explosionPrefab;
 
-    private const float shootPeriod = 1.0f;
-    private float shootCooldownTime = shootPeriod;
-    private const float colorPeriod = 0.25f;
-    private float colorCooldownTime = colorPeriod;
+    private const float _shootPeriod = 1.0f;
+    private float _shootCooldownTime = _shootPeriod;
+    private const float _colorPeriod = 0.25f;
+    private float _colorCooldownTime = _colorPeriod;
    
 
     
@@ -33,15 +33,15 @@ public class EnemyShooter : MonoBehaviour
     void Update()
     {
         
-        shootCooldownTime += Time.deltaTime;
-        colorCooldownTime += Time.deltaTime;
+        _shootCooldownTime += Time.deltaTime;
+        _colorCooldownTime += Time.deltaTime;
 
-        if (_sprite.color == Color.yellow && colorCooldownTime > colorPeriod)
+        if (_sprite.color == Color.yellow && _colorCooldownTime > _colorPeriod)
         {
             _sprite.color = Color.white;
         }
         
-        if  (shootCooldownTime > shootPeriod)   //        if  (cooldownTime > cooldownPeriod)   
+        if  (_shootCooldownTime > _shootPeriod)   //        if  (cooldownTime > cooldownPeriod)   
 
         {
             Shoot();
@@ -70,7 +70,7 @@ public class EnemyShooter : MonoBehaviour
             _bulletInstance = Instantiate(_bulletPrefab, _firePoint.position, rotation);
             _bodyInstance = _bulletInstance.GetComponent<Rigidbody2D>();
             _bodyInstance.AddForce(direction * _bulletSpeed, ForceMode2D.Impulse);
-            shootCooldownTime = 0.0f;
+            _shootCooldownTime = 0.0f;
             _body.rotation += 18;
             SwitchBullet();
         }
@@ -104,6 +104,6 @@ public class EnemyShooter : MonoBehaviour
     {
         _sprite.color = Color.yellow;
         _health -= _damage;
-        colorCooldownTime = 0;
+        _colorCooldownTime = 0;
     }
 }

@@ -14,10 +14,10 @@ public class Player : MonoBehaviour
     private Vector2 _direction;
     private Vector2 _targetPos;
     private float _angle;
-    private float moveSpeed = 1f;
+    private float _moveSpeed = 1f;
     
     private const float _invicibilityPeriod = 1.5f;
-    private float cooldownTime = _invicibilityPeriod;
+    private float _cooldownTime = _invicibilityPeriod;
 
 
 
@@ -36,9 +36,9 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        cooldownTime += Time.deltaTime;
+        _cooldownTime += Time.deltaTime;
 
-        if ((_sprite.color == Color.red) && (cooldownTime > _invicibilityPeriod))
+        if ((_sprite.color == Color.red) && (_cooldownTime > _invicibilityPeriod))
         {
             _sprite.color = Color.white;
         }
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
 
     private void Move() //Moves the player
     {
-        transform.Translate(_direction * (moveSpeed * Time.deltaTime));
+        transform.Translate(_direction * (_moveSpeed * Time.deltaTime));
         if (_direction.x != 0 || _direction.y != 0)                          // PUT DEADZONE HERE
         {
             SetAnimatorMove(_direction);
@@ -110,7 +110,7 @@ public class Player : MonoBehaviour
     private float _damage = 1.0f;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.tag == "EnemyBullet") /*|| (collision.gameObject.tag == "Enemy")*/ && (cooldownTime > _invicibilityPeriod))
+        if ((collision.gameObject.tag == "EnemyBullet") /*|| (collision.gameObject.tag == "Enemy")*/ && (_cooldownTime > _invicibilityPeriod))
         {
             TakeDamage();
         }
@@ -121,6 +121,6 @@ public class Player : MonoBehaviour
         Debug.Log("take damage");
         _sprite.color = Color.red;
         _health -= _damage;
-        cooldownTime = 0f;
+        _cooldownTime = 0f;
     }
 }
