@@ -19,5 +19,12 @@ A problem that we had throughout but that we were able to solve towards the end 
 
 ![image](https://user-images.githubusercontent.com/71376109/121245034-d98a3200-c89f-11eb-9c62-6328f8cb14fc.png)
 
+### and also have an early draft of what the game was to look like, and how we first started imagining it :
+![image](https://user-images.githubusercontent.com/71376109/121247972-215e8880-c8a3-11eb-8d39-d0ac7dd3b993.png)
+
+
+
+
+
 ### the images above show the sprites of Finalbossblues which were used for all the sprites in the game except a couple others.
 
