@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 7531807427442845027}
   - component: {fileID: 1926815997}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerPrefab
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -268,7 +268,6 @@ MonoBehaviour:
   _sprite: {fileID: 8883973779360946064}
   _explosionPrefab: {fileID: 7638317843236491221, guid: d8489f04e83b68947b65a2c87f5c9d8e, type: 3}
   _ui: {fileID: 0}
-  _health: 3
 --- !u!114 &8883973779360946092
 MonoBehaviour:
   m_ObjectHideFlags: 0

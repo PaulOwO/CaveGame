@@ -1127,7 +1127,7 @@ MonoBehaviour:
   _startPrefab: {fileID: 630116023364761305, guid: a50e2c7b3891fce4fb5d167980d25806, type: 3}
   _endPrefab: {fileID: 445939368656406202, guid: 852855a39e4b3824d8dd0e6da8c67e86, type: 3}
   _enemyShooter: {fileID: 1381977682432572845, guid: c7a48d7f4b87a614d9b040b09a0769e6, type: 3}
-  _enemyChasser: {fileID: 1381977682432572845, guid: c7a48d7f4b87a614d9b040b09a0769e6, type: 3}
+  _enemyChasser: {fileID: 8703737917576207717, guid: 35311fc526c0aa54489fe901834fed31, type: 3}
 --- !u!1 &1014956765
 GameObject:
   m_ObjectHideFlags: 0

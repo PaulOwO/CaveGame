@@ -18,7 +18,7 @@ public class EnemyShooter : MonoBehaviour
     private GameObject _bulletInstance;
     private Rigidbody2D _bodyInstance;
     private float _bulletSpeed;
-    
+
     void Start()
     {
         _bulletSpeed = _slowBulletSpeed;

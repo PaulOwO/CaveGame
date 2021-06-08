@@ -249,7 +249,7 @@ public class CellularAutomata : MonoBehaviour
         cellViews = new CellBehavior[width, height];
         cells = new Cell[width, height];
         previousCells = new Cell[width, height];
-        System.Random pseudoRandom = new System.Random(seed);
+        System.Random pseudoRandom = new System.Random();
         worldRect = new Rect()
         {
             min = new Vector2(-width / 2.0f * cellSize, -height / 2.0f * cellSize),
@@ -378,17 +378,30 @@ public class CellularAutomata : MonoBehaviour
         
         //Add enemy
         
-        
-        /*for (int x = 0; x < width; x += 15)
+        for (int x = 10; x < width; x += 15)
         {
             for (int y = 0; y < height; y += 15)
             {
                 if (cells[x, y].isAlive)
                 {
-                    Vector3 position = new Vector3((x-width/2)*cellSize,(y-height/2)*cellSize, 0.0f);
+                    Vector3 position = new Vector3((x - width / 2) * cellSize, (y - height / 2) * cellSize, 0.0f);
                     Instantiate(_enemyShooter, position, Quaternion.identity, transform);
                 }
             }
+        }
+        for (int x = 10; x < width; x += 11)
+        {
+            for (int y = 0; y < height; y += 11)
+            {
+                if (cells[x, y].isAlive)
+                {
+                    Vector3 position = new Vector3((x - width / 2) * cellSize, (y - height / 2) * cellSize, 0.0f);
+                    Instantiate(_enemyChasser, position, Quaternion.identity, transform);
+                }
+            }
+        }
+        /*
+        
         }*/
 
         /* foreach (var tiles  in Regions)
@@ -660,7 +673,28 @@ public class CellularAutomata : MonoBehaviour
 
     private void SpawnEnemiesInRegion(Region region)
     {
-        
+
+       /* for (int x = 0; x < width; x += 15)
+        {
+            for (int y = 0; y < height; y += 15)
+            {
+                if (cells[x, y].isAlive)
+                {
+                    Vector3 position = new Vector3((x - width / 2) * cellSize, (y - height / 2) * cellSize, 0.0f);
+                    Instantiate(_enemyShooter, position, Quaternion.identity, transform);
+                }
+            }
+        }
+
+        /*  foreach (var tiles in regions_)
+          {
+              int random = Random.Range(1, 10);
+              if (random == 3)
+              {
+                  tiles[x, y];
+                  Instantiate(_enemyShooter);
+              }
+          }*/
     }
 
     int GetAliveNeighborCount(int currentX, int currentY)

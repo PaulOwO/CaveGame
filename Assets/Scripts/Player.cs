@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] private GameObject _explosionPrefab;
-    private float _health = 3.0f;
+    private float _health = 5.0f;
     private Vector2 _direction;
     private Vector2 _targetPos;
     private float _angle;
@@ -106,7 +106,8 @@ public class Player : MonoBehaviour
     private float _damage = 1.0f;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.gameObject.tag == "EnemyBullet") /*|| (collision.gameObject.tag == "Enemy")*/ && (_cooldownTime > _invicibilityPeriod))
+        if (((collision.gameObject.tag == "EnemyBullet") && (_cooldownTime > _invicibilityPeriod)) 
+            || ((collision.gameObject.tag == "Enemy") && (_cooldownTime > _invicibilityPeriod)))
         {
             TakeDamage();
         }

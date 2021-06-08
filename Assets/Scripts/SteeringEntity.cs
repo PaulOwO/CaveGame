@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using Random = System.Random;
 
 public class SteeringEntity : MonoBehaviour
@@ -20,6 +21,7 @@ public class SteeringEntity : MonoBehaviour
     private Transform EnemyChaser;
     private Rigidbody2D body;
 
+    [SerializeField] private GameObject player_;
     [SerializeField] private float entitySpeed = 3.0f;
     [SerializeField] private float pointThreshold = 0.5f;
     [SerializeField] private float forceIntensity = 5.0f;
@@ -36,8 +38,21 @@ public class SteeringEntity : MonoBehaviour
             Destroy(body);
     }
 
+
+
+
     private void Update()
     {
+        if (isAlive_ == false)
+        {
+            Destroy(gameObject);
+        }
+
+        if (followingPlayer_ == true)
+        {
+            Chase();
+        }
+        EnemyChaser = transform;
         for (int i = 0; i < pathParent.childCount; i++)
         {
             path[i] = pathParent.GetChild(i).position;
@@ -117,4 +132,52 @@ public class SteeringEntity : MonoBehaviour
             }
         }
     }
+
+    private bool isAlive_ = true;
+    private bool followingPlayer_ = false;
+
+    private void Chase()
+    {
+        EnemyChaser = transform;
+        for (int i = 0; i < pathParent.childCount; i++)
+        {
+            path[i] = pathParent.GetChild(i).position;
+        }
+        EnemyChaser = transform;
+        if (steeringType == SteeringType.DeltaPosByHand)
+        {
+            var entityPosition = EnemyChaser.position;
+            var targetPosition = path[targetIndex];
+            var deltaPos = targetPosition - entityPosition;
+            if (deltaPos.magnitude < pointThreshold)
+            {
+                targetIndex++;
+                if (targetIndex >= path.Length)
+                    targetIndex = 0;
+            }
+            else
+            {
+                entityPosition += entitySpeed * Time.deltaTime * deltaPos.normalized;
+                EnemyChaser.position = entityPosition;
+            }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Following Player!");
+            followingPlayer_ = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Stopped following Player!");
+            followingPlayer_ = false;
+        }
+    }
 }
+
