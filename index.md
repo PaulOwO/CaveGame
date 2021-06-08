@@ -1,37 +1,23 @@
-## Welcome to GitHub Pages
+GPR920
+Aidan/Paul
 
-You can use the [editor on GitHub](https://github.com/PaulOwO/CaveGame/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+# CaveGame 
+## The procedurally generated Top Down Shooter where you face ennemies within a cave, you must explore it to find the exit and to win the game
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Contexte and explication of the code
+CaveGame is mainly inspired by games like enter the gungeon, with the key objective of creating a cave to have a gameplay that differs from it. We tested the game nuclear throne which already uses this principle but we tried to move away from its brutal gameplay with the choice of the weapon of the revolver and its reloading. We have therefore chosen for cellular automata a formation with less open space. To mark the beginning and the end of the level going beyond the left and the right side is the start and the arrival in the form of prefab because it was the easiest and fastest way to create this two component. We also had the idea of doing it like in the enter the gungeon's style in that each region of our cellular automata is separated by corridors that close as the player passes through and make enemies appear in the area where the player arrives. But we had to abandon this idea because it would have been long and complicated to implement due to several factors : we would have had to make a bfs through the hotpath to determine the order of the rooms and therefore the direction in which the corridors are supposed to be taken. After that, each corridor should understand which region it belongs to in order to make the enemies appear. Since all this was too complicated for us, we decided to make the enemies appear randomly on the whole map, even the corridors to force the player to fight. To have a "bullet hell" feel to the game, both enemies in the game shoot at some point. To create a notion of choice for the player we put a fighter that follows the player and then explodes while dying to keep the player moving and a shooter that fills the room with bullets. The player has to decide which of the two is most important to eliminate. You can see from the diagram that the player has several choices: move to the right but risk taking damage from the hunter's explosion or have good timing to avoid the shooter's bullets.
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### the problems that were encountered
+A problem that we had throughout but that we were able to solve towards the end of the project is a problem of visibility. Indeed to display the player's life and bullets in the UI I had to reach other script variables, but putting them in public was not the solution. I learned the use of "sender" and "getteur" as well as "encapsulate field" which allow at the same time to make the code more readable and optimized. For example, my UI which was updated at each update is now updated when a change affecting it is called. Another big issue was getting the chaser to work properly, especially with the fact that multiple techniques were used to achieve the pathfidning we wanted for the AI, we started off with a steering entity and then opted to try A* to find the quickest path to the player itself. The pathfinding was somewhat successfull but would not work when paired with our cellular automata. We therefore opted for a more simple AI pathfinding and started using a radius to define when the chaser would detect the player. This was used via a circular trigger placed upon the chaser. However the box collider and ciricle collider ended up intertwining with each other when interacting with the bullet prefab we had made, which made things significantly harder, in the end we opted for a more simple approach that had much less to do with A* or pathfinding than we wished.
 
-```markdown
-Syntax highlighted code block
+### here are a couple screenshots of the actual game itself in action showing the various things we decided to implement together :
 
-# Header 1
-## Header 2
-### Header 3
+![image](https://user-images.githubusercontent.com/71376109/121244613-5c5ebd00-c89f-11eb-9408-f466d0a89e7d.png)
 
-- Bulleted
-- List
+![image](https://user-images.githubusercontent.com/71376109/121245000-cf683380-c89f-11eb-920d-00aebc776521.png)
 
-1. Numbered
-2. List
+![image](https://user-images.githubusercontent.com/71376109/121245034-d98a3200-c89f-11eb-9c62-6328f8cb14fc.png)
 
-**Bold** and _Italic_ and `Code` text
+### the images above show the sprites of Finalbossblues which were used for all the sprites in the game except a couple others.
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/PaulOwO/CaveGame/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
